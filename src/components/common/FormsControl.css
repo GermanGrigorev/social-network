@@ -1,0 +1,17 @@
+.FormError {
+
+}
+
+.FormError-Input {
+    border: solid 1px red;
+}
+
+.FormError-Text {
+    color: red;
+}
+
+.FormError_summary {
+    border: 1px solid red;
+    padding: 5px;
+    color: indianred;
+}
