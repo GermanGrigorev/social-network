@@ -7,9 +7,16 @@ import {
     toggleFollowed, toggleFollowingFriend, toggleIsFollowingInProgress,
 } from '../../Redux/friendsReducer';
 import Preloader from "../common/Preloader";
-import {Redirect} from "react-router-dom";
 import {withAuthRedirect} from "../../hocs/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getFriends as getFriendsArray,
+    getCurrentPage,
+    getIsFetching,
+    getIsFollowingInProgress,
+    getPageSize,
+    getTotalUsersCount
+} from "../../Redux/friendsSelectors";
 
 class FriendsContainer extends React.Component {
     componentDidMount() {
@@ -21,7 +28,7 @@ class FriendsContainer extends React.Component {
     onPageChanged = (newPage) => {
         this.props.setCurrentPage(newPage);
         this.props.getFriends(newPage, this.props.pageSize);
-    }
+    };
 
     render() {
         return <>
@@ -40,15 +47,15 @@ class FriendsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        friends: state.friendsPage.friends,
-        pageSize: state.friendsPage.pageSize,
-        totalUsersCount: state.friendsPage.totalUsersCount,
-        currentPage: state.friendsPage.currentPage,
-        isFetching: state.friendsPage.isFetching,
-        isFollowingInProgress: state.friendsPage.isFollowingInProgress,
+        friends: getFriendsArray(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        isFollowingInProgress: getIsFollowingInProgress(state),
         isAuth: state.auth.isAuth,
     }
-}
+};
 
 export default compose(
     withAuthRedirect,
