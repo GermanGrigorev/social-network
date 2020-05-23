@@ -20,10 +20,12 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        return <>
-            {/*{this.props.isFetching && <Preloader />}*/}
-            <Profile {...this.props}/>
-        </>
+        return (
+            <>
+                {/*{this.props.isFetching && <Preloader />}*/}
+                <Profile {...this.props}/>
+            </>
+        );
     }
 }
 
@@ -33,7 +35,7 @@ let mapStateToProps = (state) => {
         isAuth: state.auth.isAuth,
         ...state.profilePage,
     }
-}
+};
 
 export default compose(
     withRouter,
