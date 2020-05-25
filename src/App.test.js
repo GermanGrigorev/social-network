@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import Music from "./components/Music/Music";
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
+  const { getByText } = render(<Music />);
+  const linkElement = getByText(/say hi/i);
   expect(linkElement).toBeInTheDocument();
 });

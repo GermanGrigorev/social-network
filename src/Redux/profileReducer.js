@@ -1,10 +1,10 @@
 import {profileApi} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const DELETE_POST = 'DELETE_POST';
-const SET_PROFILE = 'SET_PROFILE';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'social-network/profile/ADD-POST';
+const DELETE_POST = 'social-network/profile/DELETE_POST';
+const SET_PROFILE = 'social-network/profile/SET_PROFILE';
+const TOGGLE_IS_FETCHING = 'social-network/profile/TOGGLE_IS_FETCHING';
+const SET_STATUS = 'social-network/profile/SET_STATUS';
 
 let initialState = { //TODO clear
     fullName: '',
@@ -52,7 +52,7 @@ const profileReducer = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const deletePost = (postId) => ({type: ADD_POST, postId});
@@ -61,28 +61,25 @@ export const toggleIsFetching = () => ({type: TOGGLE_IS_FETCHING,});
 export const setStatus = (status) => ({type: SET_STATUS, status,});
 
 export const getUsersProfile = (userId) => {
-    return (dispatch) => {
-        profileApi.getUsersProfile(userId).then((data) => {
-            dispatch(setProfile(data));
-        })
+    return async (dispatch) => {
+        const data = await profileApi.getUsersProfile(userId);
+        dispatch(setProfile(data));
     }
 };
 
 export const getUsersStatus = (userId) => {
-    return (dispatch) => {
-        profileApi.getStatus(userId).then((status) => {
-            dispatch(setStatus(status));
-        })
+    return async (dispatch) => {
+        const status = await profileApi.getStatus(userId);
+        dispatch(setStatus(status));
     }
 };
 
 export const changeStatus = (status) => {
-    return (dispatch) => {
-        profileApi.updateStatus(status).then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        })
+    return async (dispatch) => {
+        const data = await profileApi.updateStatus(status);
+        if (data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     };
 };
 

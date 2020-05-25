@@ -1,9 +1,9 @@
 import {createSelector} from "reselect";
 
-const getFriends = (state) => state.friendsPage.friends;
+export const getFriends = (state) => state.friendsPage.friends;
 //пример работы create selector
 export const getFriendsSup = createSelector(getFriends, (friends) => {
-    friends.filter(u => true);
+    return friends.filter(f => true);
 });
 export const getPageSize = (state) => state.friendsPage.pageSize;
 export const getTotalUsersCount = (state) => state.friendsPage.totalUsersCount;

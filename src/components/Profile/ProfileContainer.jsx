@@ -9,6 +9,7 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     //TODO toggle isFetching вынести в отдельный редюсер
+    //TODO все перекинуть в hooks либо деструктуризировать пропсы
     componentDidMount() {
         // this.props.toggleIsFetching();
         let userId = this.props.match.params.userId || this.props.authorizedUserId;

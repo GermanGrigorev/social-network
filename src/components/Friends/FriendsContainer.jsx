@@ -10,7 +10,7 @@ import Preloader from "../common/Preloader";
 import {withAuthRedirect} from "../../hocs/withAuthRedirect";
 import {compose} from "redux";
 import {
-    getFriendsSup,
+    getFriendsSup as getFriendsArray,
     getCurrentPage,
     getIsFetching,
     getIsFollowingInProgress,
@@ -47,7 +47,7 @@ class FriendsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        friends: getFriendsSup(state),
+        friends: getFriendsArray(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
         currentPage: getCurrentPage(state),

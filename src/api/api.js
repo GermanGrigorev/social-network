@@ -9,59 +9,60 @@ const axiosInstance = axios.create({
 });
 
 export const profileApi = {
-    getUsersProfile(userId) {
-        return axiosInstance.get(`profile/${userId}`)
-            .then((response) => response.data);
+    async getUsersProfile(userId) {
+        const response = await axiosInstance.get(`profile/${userId}`);
+        return response.data;
     },
-    getStatus(userId) {
-        return axiosInstance.get(`profile/status/${userId}`)
-            .then((response) => response.data);
+    async getStatus(userId) {
+        const response = await axiosInstance.get(`profile/status/${userId}`);
+        return response.data;
     },
-    updateStatus(status) {
-        return axiosInstance.put('profile/status', {status: status})
-            .then((response) => response.data);
+    async updateStatus(status) {
+        const response = await axiosInstance.put('profile/status', {status: status});
+        return response.data;
     },
 };
 
 export const usersApi = {
-    getUsers(currentPage = 1, pageSize = 10) {
-        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then((response) => response.data);
+    async getUsers(currentPage = 1, pageSize = 10) {
+        const response = await axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`);
+        return response.data;
     },
 
-    follow(friendId) {
-        return axiosInstance.post(`follow/${friendId}`)
-            .then((response) => response.data);
+    async follow(friendId) {
+        const response = await axiosInstance.post(`follow/${friendId}`);
+        return response.data;
     },
 
-    unfollow(friendId) {
-        return axiosInstance.delete(`follow/${friendId}`)
-            .then((response) => response.data);
+    async unfollow(friendId) {
+        const response = await axiosInstance.delete(`follow/${friendId}`);
+        return response.data;
     },
 };
 
 export const authApi = {
-    getAuthData() {
-        return axiosInstance.get('auth/me')
-            .then((response) => response.data);
+    async getAuthData() {
+        const response = await axiosInstance.get('auth/me');
+        return response.data;
     },
-    login(email, password, rememberMe, captcha) {
-        return axiosInstance.post('/auth/login', {
+    async login(email, password, rememberMe, captcha) {
+        const response = await axiosInstance.post('/auth/login', {
             email,
             password,
             rememberMe,
             captcha,
-        }).then((response) => response.data);
+        });
+        return response.data;
     },
-    logout() {
-        return axiosInstance.delete('/auth/login')
-            .then((response) => response.data);
+    async logout() {
+        const response = await axiosInstance.delete('/auth/login');
+        return response.data;
     },
 };
 
 export const securityApi = {
-    getCaptcha() {
-        return axiosInstance.get('/security/get-captcha-url')
-            .then((response) => response.data);
+    async getCaptcha() {
+        const response = await axiosInstance.get('/security/get-captcha-url');
+        return response.data;
     },
 };

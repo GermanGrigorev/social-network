@@ -1,4 +1,4 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_MESSAGE = 'social-network/dialogs/ADD-MESSAGE';
 
 let initialState = {
     dialogs: [
@@ -16,7 +16,7 @@ let initialState = {
         {id: 3, text: 'where are you'},
         {id: 4, text: 'miss u'},
     ],
-}
+};
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,11 +29,11 @@ const dialogsReducer = (state = initialState, action) => {
             return  {
                 ...state,
                 messages: [...state.messages, message],
-            }
+            };
         default: return state;
     }
-}
+};
 
-export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText})
+export const addMessage = (newMessageText) => ({type: ADD_MESSAGE, newMessageText});
 
 export default dialogsReducer;

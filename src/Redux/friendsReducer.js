@@ -1,11 +1,12 @@
 import {usersApi} from "../api/api";
+import {updateObjectInArray} from "../utils/updateObjectInArray";
 
-const SET_FRIENDS = 'SET_FRIENDS';
-const TOGGLE_FOLLOWED = 'TOGGLE_FOLLOWED';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE_IS_FOLLOWING_IN_PROGRESS';
+const SET_FRIENDS = 'social-network/friends/SET_FRIENDS';
+const TOGGLE_FOLLOWED = 'social-network/friends/TOGGLE_FOLLOWED';
+const SET_CURRENT_PAGE = 'social-network/friends/SET_CURRENT_PAGE';
+const SET_TOTAL_USERS_COUNT = 'social-network/friends/SET_TOTAL_USERS_COUNT';
+const TOGGLE_IS_FETCHING = 'social-network/friends/TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'social-network/friends/TOGGLE_IS_FOLLOWING_IN_PROGRESS';
 
 let initialState = {
     friends: [],
@@ -26,15 +27,12 @@ const friendsReducer = (state = initialState, action) => {
         case TOGGLE_FOLLOWED:
             return {
                 ...state,
-                friends: state.friends.map((friend) => {
-                    if (friend.id === action.friendId) {
-                        return {
-                            ...friend,
-                            followed: action.flag,
-                        }
-                    }
-                    return friend;
-                })
+                friends: updateObjectInArray(
+                    state.friends,
+                    'id',
+                    action.friendId,
+                    {followed: action.flag,}
+                    ),
             };
         case SET_CURRENT_PAGE:
             return {
@@ -69,26 +67,28 @@ export const toggleIsFetching = (flag) => ({type: TOGGLE_IS_FETCHING, flag});
 export const toggleIsFollowingInProgress = (flag) => ({type: TOGGLE_IS_FOLLOWING_IN_PROGRESS, flag});
 
 export const getFriends = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        usersApi.getUsers(currentPage, pageSize).then((data) => {
-            dispatch(setFriends(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-            dispatch(toggleIsFetching(false)); //TODO заменить все тоглы на toggle(true/false)
-        })
+
+        const data = await usersApi.getUsers(currentPage, pageSize);
+
+        dispatch(setFriends(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
+        dispatch(toggleIsFetching(false)); //TODO заменить все тоглы на toggle(true/false)
     }
 };
 
 export const toggleFollowingFriend = (friendId, flag) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFollowingInProgress(true));
-        const promise = flag ? usersApi.follow : usersApi.unfollow;
-        promise(friendId).then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(toggleFollowed(friendId, flag));
-            }
-            dispatch(toggleIsFollowingInProgress(false));
-        })
+
+        const asyncFunction = flag ? usersApi.follow : usersApi.unfollow;
+        const data = await asyncFunction(friendId);
+
+        if (data.resultCode === 0) {
+            dispatch(toggleFollowed(friendId, flag));
+        }
+        dispatch(toggleIsFollowingInProgress(false));
     }
 };
 

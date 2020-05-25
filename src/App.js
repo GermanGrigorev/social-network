@@ -11,7 +11,6 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect} from "react-redux";
-import {setAuthInfo} from "./Redux/authReducer";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader";
@@ -47,7 +46,7 @@ const mapStateToProps = (state) => {
     return {
         isInitialized: state.app.isInitialized,
     }
-}
+};
 
 export default compose(
     connect(mapStateToProps, {initializeApp}),

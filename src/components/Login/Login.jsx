@@ -8,9 +8,9 @@ class Login extends React.Component {
     render() {
         const onSubmit = (formData) => {
             this.props.login(formData.login, formData.password, formData.rememberMe, formData.captcha);
-        }
+        };
 
-        if (this.props.isAuth) return <Redirect to='/profile'/>
+        if (this.props.isAuth) return <Redirect to='/profile'/>;
 
         return (
             <div>
@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
         isCaptchaRequired: state.auth.isCaptchaRequired,
         captchaUrl: state.auth.captchaUrl,
     }
-}
+};
 
 export default connect(mapStateToProps, {
     login
