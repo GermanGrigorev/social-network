@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
     headers: {
         'API-KEY': '4c7b227d-d83d-45ab-9f12-6ba2c0dc507f',
     },
-})
+});
 
 export const profileApi = {
     getUsersProfile(userId) {
@@ -20,8 +20,8 @@ export const profileApi = {
     updateStatus(status) {
         return axiosInstance.put('profile/status', {status: status})
             .then((response) => response.data);
-    }
-}
+    },
+};
 
 export const usersApi = {
     getUsers(currentPage = 1, pageSize = 10) {
@@ -38,7 +38,7 @@ export const usersApi = {
         return axiosInstance.delete(`follow/${friendId}`)
             .then((response) => response.data);
     },
-}
+};
 
 export const authApi = {
     getAuthData() {
@@ -56,12 +56,12 @@ export const authApi = {
     logout() {
         return axiosInstance.delete('/auth/login')
             .then((response) => response.data);
-    }
-}
+    },
+};
 
 export const securityApi = {
     getCaptcha() {
         return axiosInstance.get('/security/get-captcha-url')
             .then((response) => response.data);
-    }
-}
+    },
+};
