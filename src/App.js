@@ -14,6 +14,8 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/appReducer";
 import Preloader from "./components/common/Preloader";
+import withBrowserRouter from "./hocs/withBrowserRouter";
+import withStoreProvider from "./hocs/withStoreProvider";
 
 class App extends React.Component {
     componentDidMount() {
@@ -36,6 +38,7 @@ class App extends React.Component {
                     <Route path='/friends' render={() => <FriendsContainer/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/login' render={() => <Login/>}/>
+                    <Route exact path='/' render={() => <Login/>}/>
                 </div>
             </div>
         );
@@ -49,6 +52,8 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(mapStateToProps, {initializeApp}),
+    withBrowserRouter,
+    withStoreProvider,
     withRouter,
+    connect(mapStateToProps, {initializeApp}),
 )(App);

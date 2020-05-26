@@ -7,7 +7,7 @@ import {
     toggleFollowed, toggleFollowingFriend, toggleIsFollowingInProgress,
 } from '../../Redux/friendsReducer';
 import Preloader from "../common/Preloader";
-import {withAuthRedirect} from "../../hocs/withAuthRedirect";
+import withAuthRedirect from "../../hocs/withAuthRedirect";
 import {compose} from "redux";
 import {
     getFriendsSup as getFriendsArray,

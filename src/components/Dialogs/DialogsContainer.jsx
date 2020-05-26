@@ -5,8 +5,8 @@ import {
 } from '../../Redux/dialogsReducer';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
-import {withAuthRedirect} from "../../hocs/withAuthRedirect";
 import {compose} from "redux";
+import withAuthRedirect from "../../hocs/withAuthRedirect";
 
 class DialogsContainer extends React.Component {
     render() {

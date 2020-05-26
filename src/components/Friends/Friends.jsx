@@ -2,29 +2,12 @@ import React from 'react';
 import './Friends.css'
 import defaultUserIcon from "../../res/userIcon.png"
 import {NavLink} from "react-router-dom";
+import Paginator from "./Paginator/Paginator";
 
-let Friends = (props) => {
-    let drawPages = () => { //TODO healthy paginator
-        let pages = [];
-        let length = Math.ceil(props.totalUsersCount / props.pageSize);
-        for (let i = 1; i <= 10; i += 1) {
-            pages.push(
-                <span
-                    className={i === props.currentPage ? 'selector-page_selected' : ''}
-                    key={i}
-                    onClick={() => {
-                        props.onPageChanged(i)
-                    }}
-                >
-                {i}
-                </span>)
-        }
-        return pages;
-    };
-
+const Friends = (props) => {
     return (
         <div>
-            {drawPages()}
+            <Paginator {...props}/>
             {props.friends.map((friend) => {
                 //TODO FRIEND COMPONENT
                 return (
