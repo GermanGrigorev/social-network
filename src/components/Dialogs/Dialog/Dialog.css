@@ -2,3 +2,8 @@
     grid-template-columns: 1fr 8fr;
     display: grid;
 }
+
+.Dialog-NavLink {
+    color: black;
+    text-decoration: none;
+}

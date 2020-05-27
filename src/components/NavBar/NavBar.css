@@ -1,4 +1,8 @@
-.link {
+.NavBar-NavLink {
     text-decoration: none;
     color: black;
+}
+
+.NavBar-NavLink:hover {
+    color: red;
 }

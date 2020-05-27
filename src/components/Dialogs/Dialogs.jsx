@@ -6,7 +6,13 @@ import AddMessageForm from "./AddMessageForm/AddMessageForm";
 
 const Dialogs = (props) => {
     const dialogsElements = props.dialogPage.dialogs.map((dialog) => {
-        return <Dialog id={dialog.id} name={dialog.Name} key={dialog.id}/>
+        return (
+            <Dialog
+                id={dialog.id}
+                name={dialog.Name}
+                key={dialog.id}
+            />
+        );
     });
 
     const messagesElements = props.dialogPage.messages.map((message) => {

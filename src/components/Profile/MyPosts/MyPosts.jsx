@@ -17,7 +17,6 @@ const MyPosts = (props) => {
         props.addPost(formData.newPostText);
     };
 
-    console.log("POSTS");
     return (
         <div>
             <div className='my-posts__new-post'>
