@@ -3,11 +3,21 @@ import './Friends.css'
 import defaultUserIcon from "../../res/userIcon.png"
 import {NavLink} from "react-router-dom";
 import Paginator from "./Paginator/Paginator";
+import {Pagination} from "antd";
+import 'antd/dist/antd.css';
 
 const Friends = (props) => {
     return (
         <div>
-            <Paginator {...props}/>
+            {/*<Paginator {...props}/>*/}
+            <Pagination
+                onChange={props.onPageChanged}
+                current={props.currentPage}
+                defaultPageSize={props.pageSize}
+                total={props.totalUsersCount}
+                showSizeChanger={false} //TODO исправить чтоб работало
+                showQuickJumper
+            />
             {props.friends.map((friend) => {
                 //TODO FRIEND COMPONENT
                 return (

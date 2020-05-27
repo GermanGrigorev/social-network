@@ -74,7 +74,7 @@ export const getFriends = (currentPage, pageSize) => {
 
         dispatch(setFriends(data.items));
         dispatch(setTotalUsersCount(data.totalCount));
-        dispatch(toggleIsFetching(false)); //TODO заменить все тоглы на toggle(true/false)
+        dispatch(toggleIsFetching(false));
     }
 };
 

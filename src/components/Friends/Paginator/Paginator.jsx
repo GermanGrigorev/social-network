@@ -15,7 +15,11 @@ const Paginator = (props) => { //TODO healthy paginator
                 {i}
                 </span>)
     }
-    return <div>{pages}</div>;
+    return (
+        <div>
+            {pages}
+        </div>
+    );
 };
 
 export default Paginator;

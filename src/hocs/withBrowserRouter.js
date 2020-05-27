@@ -11,8 +11,8 @@ const withBrowserRouter = (Component) => {
     }
 
     withBrowserRouterComponent.displayName = `withBrowserRouter(${Component.displayName
-        || Component.name
-        || 'Component'})`;
+    || Component.name
+    || 'Component'})`;
 
     return withBrowserRouterComponent;
 };

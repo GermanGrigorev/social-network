@@ -6,7 +6,7 @@ const SET_PROFILE = 'social-network/profile/SET_PROFILE';
 const TOGGLE_IS_FETCHING = 'social-network/profile/TOGGLE_IS_FETCHING';
 const SET_STATUS = 'social-network/profile/SET_STATUS';
 
-let initialState = { //TODO clear
+let initialState = {
     fullName: '',
     profileImage: '',
     aboutMe: '',

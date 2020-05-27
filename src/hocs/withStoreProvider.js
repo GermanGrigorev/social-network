@@ -12,8 +12,8 @@ const withStoreProvider = (Component) => {
     }
 
     withStoreProviderComponent.displayName = `withStoreProvider(${Component.displayName
-        || Component.name
-        || 'Component'})`;
+    || Component.name
+    || 'Component'})`;
 
     return withStoreProviderComponent;
 }
