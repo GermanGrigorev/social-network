@@ -1,11 +1,12 @@
 import React from 'react'
 import './Header.css'
-import {NavLink} from "react-router-dom";
+import {NavLink} from 'react-router-dom';
+import logo from '../../res/logo.png'
 
 const Header = (props) => {
     return (
         <header className='header'>
-            <img src='http://www.pngmart.com/files/3/Sunshine-PNG-Transparent.png'/>
+            <img src={logo}/>
             <div className='LoginBlock'>
                 {props.isAuth && ( //TODO сделать красиво
                     <div>
