@@ -16,6 +16,7 @@ import Preloader from "./components/common/Preloader";
 import withBrowserRouter from "./hocs/withBrowserRouter";
 import withStoreProvider from "./hocs/withStoreProvider";
 import withSuspense from "./hocs/withSuspense";
+import withHashRouter from "./hocs/withHashRouter";
 
 const FriendsContainer = React.lazy(() => import("./components/Friends/FriendsContainer"));
 
@@ -55,7 +56,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    withBrowserRouter,
+    withHashRouter,
     withStoreProvider,
     withRouter,
     connect(mapStateToProps, {initializeApp}),

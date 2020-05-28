@@ -9,13 +9,13 @@ const withStoreProvider = (Component) => {
                 <Component {...props} />
             </Provider>
         )
-    }
+    };
 
     withStoreProviderComponent.displayName = `withStoreProvider(${Component.displayName
     || Component.name
     || 'Component'})`;
 
     return withStoreProviderComponent;
-}
+};
 
 export default withStoreProvider;

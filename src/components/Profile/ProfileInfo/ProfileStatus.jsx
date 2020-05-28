@@ -5,7 +5,7 @@ class ProfileStatus extends React.Component {
         editMode: false,
         statusValue: this.props.status, //TODO почему-то при обновлении страницы инпут пустой,
         // если перезайти на вкладку(не обновлять) то инпут снова синхронизированн
-    }
+    };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.status !== this.props.status) {
@@ -17,16 +17,16 @@ class ProfileStatus extends React.Component {
         this.setState({
             editMode: flag,
         });
-    }
+    };
 
     saveStatus = () => {
         this.props.changeStatus(this.state.statusValue);
         this.toggleEditMode(false);
-    }
+    };
 
     onStatusChange = (e) => {
         this.setState({statusValue: e.currentTarget.value});
-    }
+    };
 
     render() {
         return (

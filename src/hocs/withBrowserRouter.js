@@ -2,13 +2,13 @@ import {BrowserRouter} from "react-router-dom";
 import React from "react";
 
 const withBrowserRouter = (Component) => {
-    let withBrowserRouterComponent = (props) => {
+    const withBrowserRouterComponent = (props) => {
         return (
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Component {...props} />
             </BrowserRouter>
         );
-    }
+    };
 
     withBrowserRouterComponent.displayName = `withBrowserRouter(${Component.displayName
     || Component.name
