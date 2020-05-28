@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9b3c9efb87e46d082910a38c0747ff47",
+    "revision": "8640345f48d338cbef302e26400202af",
     "url": "/social-network/index.html"
   },
   {
@@ -8,20 +8,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/social-network/static/css/3.63b65d4e.chunk.css"
   },
   {
-    "revision": "f08f06d6466479fc2ea5",
+    "revision": "670bb3046696f7e3ff1a",
     "url": "/social-network/static/css/4.1ae74c4a.chunk.css"
   },
   {
-    "revision": "3ce0f32e685afbf03bef",
+    "revision": "c71a70a133252855cbbe",
     "url": "/social-network/static/css/main.6a3e0c54.chunk.css"
   },
   {
-    "revision": "810eeee0d74cec6017fd",
-    "url": "/social-network/static/js/2.e6b9c0dc.chunk.js"
+    "revision": "c7cdb0629729d353aff6",
+    "url": "/social-network/static/js/2.97fe012c.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/social-network/static/js/2.e6b9c0dc.chunk.js.LICENSE.txt"
+    "url": "/social-network/static/js/2.97fe012c.chunk.js.LICENSE.txt"
   },
   {
     "revision": "99e12fb17f5185951b26",
@@ -32,16 +32,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/social-network/static/js/3.5ffcac6e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f08f06d6466479fc2ea5",
-    "url": "/social-network/static/js/4.b2a87efd.chunk.js"
+    "revision": "670bb3046696f7e3ff1a",
+    "url": "/social-network/static/js/4.b7569290.chunk.js"
   },
   {
-    "revision": "3ce0f32e685afbf03bef",
-    "url": "/social-network/static/js/main.8c411f0d.chunk.js"
+    "revision": "c71a70a133252855cbbe",
+    "url": "/social-network/static/js/main.f3e4eb4a.chunk.js"
   },
   {
-    "revision": "52f5eb1684151de500de",
-    "url": "/social-network/static/js/runtime-main.b4339e63.js"
+    "revision": "edc7de0007469413789a",
+    "url": "/social-network/static/js/runtime-main.9f813c40.js"
   },
   {
     "revision": "52694f7244746ce50a5a02be1f216c5a",
