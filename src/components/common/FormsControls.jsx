@@ -11,16 +11,16 @@ export const FormControl = ({input, meta, ...props}) => {
             {meta.touched && meta.error && <span className='FormError-Text'>{meta.error}</span>}
         </div>
     );
-}
+};
 
 export const Textarea = (props) => {
     return (
         <FormControl {...props} element='textarea'/>
     )
-}
+};
 
 export const Input = (props) => {
     return (
         <FormControl {...props} element='input'/>
     )
-}
+};

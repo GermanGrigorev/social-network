@@ -5,7 +5,7 @@ import './Friend.css'
 
 const Friend = (props) => {
     return (
-        <div key={props.id} >
+        <>
             <div className='Friend_inline Friend_padding'>
                 <NavLink className='image' to={`/profile/${props.id}`}>
                     <img width='40px' src={props.photos.small || defaultUserIcon}/>
@@ -22,7 +22,7 @@ const Friend = (props) => {
                     {props.followed ? 'Unfollow' : 'Follow'}
                 </button>
             </div>
-        </div>
+        </>
     )
 }
 

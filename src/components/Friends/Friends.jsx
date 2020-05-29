@@ -25,7 +25,7 @@ const Friends = (props) => {
             <div className='Friends_padding'>
                 {props.friends.map((friend) => {
                     return (
-                        <Friend className='Friends_padding' {...friend}
+                        <Friend key={friend.id} className='Friends_padding' {...friend}
                                 toggleFollowingFriend={props.toggleFollowingFriend}/>
                     )
                 })}

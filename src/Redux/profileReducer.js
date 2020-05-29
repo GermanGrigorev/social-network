@@ -9,11 +9,14 @@ const SET_PROFILE_IMAGE = 'social-network/profile/SET_PROFILE_IMAGE';
 
 let initialState = {
     fullName: '',
-    profileImage: '',
+    profileImage: '', //TODO возможно заменить на photos
     aboutMe: '',
     posts: [],
-    isFetching: false,
     status: '',
+    lookingForAJob: false,
+    lookingForAJobDescription: '',
+    contacts: {},
+    isFetching: false,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -38,7 +41,10 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 fullName: action.fullName,
                 aboutMe: action.aboutMe,
-                profileImage: action.photos.large || '',
+                contacts: action.contacts,
+                lookingForAJob: action.lookingForAJob,
+                lookingForAJobDescription: action.lookingForAJobDescription,
+                profileImage: action.photos.large,
             };
         case SET_PROFILE_IMAGE:
             return {

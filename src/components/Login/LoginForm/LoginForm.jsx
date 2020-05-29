@@ -5,7 +5,7 @@ import {required} from "../../../utils/validators";
 import '../../common/FormsControl.css'
 
 const LoginForm = (props) => {
-    return (<div>
+    return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field
@@ -38,6 +38,7 @@ const LoginForm = (props) => {
                     Incorrect login or password
                 </div>
             )}
+            {props.isCaptchaRequired && <img src={props.captchaUrl}/>}
             {props.isCaptchaRequired && (
                 <div>
                     <Field
@@ -53,7 +54,7 @@ const LoginForm = (props) => {
                 <button>Login</button>
             </div>
         </form>
-    </div>)
-}
+    )
+};
 
 export default reduxForm({form: 'login'})(LoginForm);

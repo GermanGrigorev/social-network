@@ -18,8 +18,11 @@ class Login extends React.Component {
                 <LoginForm
                     onSubmit={onSubmit}
                     isCaptchaRequired={this.props.isCaptchaRequired}
+                    captchaUrl={this.props.captchaUrl}
                 />
-                {this.props.isCaptchaRequired && <img src={this.props.captchaUrl}/>}
+                <p>If you don't have an account, use test login and password.</p>
+                <p>Login: free@samuraijs.com</p>
+                <p>Password: free</p>
             </div>
         )
     }

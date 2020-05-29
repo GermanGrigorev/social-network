@@ -17,6 +17,7 @@ import withBrowserRouter from "./hocs/withBrowserRouter";
 import withStoreProvider from "./hocs/withStoreProvider";
 import withSuspense from "./hocs/withSuspense";
 import withHashRouter from "./hocs/withHashRouter";
+import {Switch} from "react-router-dom";
 
 const FriendsContainer = React.lazy(() => import("./components/Friends/FriendsContainer"));
 
@@ -27,7 +28,7 @@ class App extends React.Component {
 
     render() {
         if (!this.props.isInitialized) {
-            return <Preloader />
+            return <Preloader/>
         }
         // TODO content component
         return (
@@ -35,14 +36,17 @@ class App extends React.Component {
                 <div className='app-wrapper__header'><HeaderContainer/></div>
                 <div className='app-wrapper__nav'><NavBar/></div>
                 <div className='app-wrapper__content'>
-                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                    <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/friends' render={() => withSuspense(FriendsContainer)()}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
-                    <Route exact path='/' render={() => <Login/>}/>
+                    <Switch>
+                        <Route exact path='/' render={() => <Login/>}/>
+                        <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                        <Route path='/news' render={() => <News/>}/>
+                        {/*<Route path='/music' render={() => <Music/>}/>*/}
+                        <Route path='/friends' render={() => withSuspense(FriendsContainer)()}/>
+                        <Route path='/settings' render={() => <Settings/>}/>
+                        <Route path='/login' render={() => <Login/>}/>
+                        <Route path='*' render={() => <h1>404: Page not found</h1>} />
+                    </Switch>
                 </div>
             </div>
         );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import './MyPosts.css'
-import AddPostForm from "../AddPostForm/AddPostForm";
+import AddPostForm from "./AddPostForm/AddPostForm";
 
 
 const MyPosts = (props) => {
@@ -29,4 +29,4 @@ const MyPosts = (props) => {
     );
 };
 
-export default MyPosts
+export default MyPosts;
