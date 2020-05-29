@@ -24,11 +24,11 @@ const Dialogs = (props) => {
     }
 
     return (
-        <div className='dialogs'>
-            <div className='dialogs__dialogs-list'>
+        <div className='Dialogs_gridTemplate Dialogs_padding'>
+            <div >
                 {dialogsElements}
             </div>
-            <div className='dialogs__messages'>
+            <div >
                 {messagesElements}
                 <AddMessageForm onSubmit={addMessage}/>
             </div>

@@ -12,6 +12,16 @@ class ProfileContainer extends React.Component {
     //TODO все перекинуть в hooks либо деструктуризировать пропсы
     componentDidMount() {
         // this.props.toggleIsFetching();
+        this.refreshProfile()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+           this.refreshProfile();
+        }
+    }
+
+    refreshProfile() {
         let userId = this.props.match.params.userId || this.props.authorizedUserId;
         if (!userId) {
             this.props.history.push('/login');
@@ -20,28 +30,20 @@ class ProfileContainer extends React.Component {
         this.props.getUsersStatus(userId);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.match.params.userId !== prevProps.match.params.userId) {
-            let userId = this.props.match.params.userId || this.props.authorizedUserId;
-            if (!userId) {
-                this.props.history.push('/login');
-            }
-            this.props.getUsersProfile(userId);
-            this.props.getUsersStatus(userId); //TODO Remove duplicated code
-        }
-    }
-
     render() {
+        const isOwner = !this.props.match.params.userId
+            || this.props.match.params.userId === this.props.authorizedUserId;
         return (
             <>
                 {/*{this.props.isFetching && <Preloader />}*/}
-                <Profile {...this.props}/>
+                <Profile {...this.props} isOwner={isOwner}/>
             </>
         );
     }
 }
 
-let mapStateToProps = (state) => {
+
+const mapStateToProps = (state) => {
     return {
         authorizedUserId: state.auth.userId,
         isAuth: state.auth.isAuth,

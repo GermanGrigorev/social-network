@@ -5,6 +5,7 @@ const DELETE_POST = 'social-network/profile/DELETE_POST';
 const SET_PROFILE = 'social-network/profile/SET_PROFILE';
 const TOGGLE_IS_FETCHING = 'social-network/profile/TOGGLE_IS_FETCHING';
 const SET_STATUS = 'social-network/profile/SET_STATUS';
+const SET_PROFILE_IMAGE = 'social-network/profile/SET_PROFILE_IMAGE';
 
 let initialState = {
     fullName: '',
@@ -39,6 +40,11 @@ const profileReducer = (state = initialState, action) => {
                 aboutMe: action.aboutMe,
                 profileImage: action.photos.large || '',
             };
+        case SET_PROFILE_IMAGE:
+            return {
+                ...state,
+                profileImage: action.imageUrl,
+            }
         case TOGGLE_IS_FETCHING:
             return {
                 ...state,
@@ -57,6 +63,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const deletePost = (postId) => ({type: ADD_POST, postId});
 export const setProfile = (profileData) => ({type: SET_PROFILE, ...profileData,});
+export const setProfileImage = (imageUrl) => ({type: SET_PROFILE_IMAGE, imageUrl,});
 export const toggleIsFetching = () => ({type: TOGGLE_IS_FETCHING,});
 export const setStatus = (status) => ({type: SET_STATUS, status,});
 
@@ -82,5 +89,11 @@ export const changeStatus = (status) => {
         }
     };
 };
+
+export const uploadProfileImage = (imageFile) => {
+    return async (dispatch) => {
+        const data = await profileApi.putProfilePhoto(imageFile)
+    }
+}
 
 export default profileReducer;

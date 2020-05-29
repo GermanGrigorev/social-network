@@ -4,7 +4,7 @@ import './NavBar.css'
 
 const NavBar = () => {
     return (
-        <div className='navbar'>
+        <div className='NavBar_padding'>
             <nav >
                 <div><NavLink className='NavBar-NavLink' to='/profile'>Profile</NavLink></div>
                 <div><NavLink className='NavBar-NavLink' to='/dialogs'>Messages</NavLink></div>

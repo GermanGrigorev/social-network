@@ -1,7 +1,12 @@
-.header img {
+.SiteLogo {
     width: 100px;
+}
+
+.Header_padding {
+    padding: 5px;
 }
 
 .LoginBlock {
     float: right;
+    padding: 5px;
 }

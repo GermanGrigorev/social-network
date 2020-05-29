@@ -6,3 +6,7 @@
 .NavBar-NavLink:hover {
     color: red;
 }
+
+.NavBar_padding {
+    padding: 5px;
+}

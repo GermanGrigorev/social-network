@@ -18,9 +18,13 @@ export const profileApi = {
         return response.data;
     },
     async updateStatus(status) {
-        const response = await axiosInstance.put('profile/status', {status: status});
+        const response = await axiosInstance.put('profile/status', {status});
         return response.data;
     },
+    async putProfilePhoto(image) {
+        const response = await axiosInstance.put('profile/photoFile', {image});
+        return response.data;
+    }
 };
 
 export const usersApi = {

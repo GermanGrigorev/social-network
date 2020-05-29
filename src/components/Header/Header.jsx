@@ -5,8 +5,8 @@ import logo from '../../res/logo.png'
 
 const Header = (props) => {
     return (
-        <header className='header'>
-            <img src={logo}/>
+        <header className='Header'>
+            <img className='SiteLogo' src={logo}/>
             <div className='LoginBlock'>
                 {props.isAuth && ( //TODO сделать красиво
                     <div>

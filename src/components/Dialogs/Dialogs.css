@@ -1,4 +1,8 @@
-.dialogs {
+.Dialogs_gridTemplate {
     grid-template-columns: 1fr 8fr;
     display: grid;
+}
+
+.Dialogs_padding {
+    padding: 5px;
 }
