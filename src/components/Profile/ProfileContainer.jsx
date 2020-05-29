@@ -1,7 +1,7 @@
 import * as React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {addPost, changeStatus, getUsersProfile, getUsersStatus} from "../../Redux/profileReducer";
+import {addPost, changeStatus, getUsersProfile, getUsersStatus, uploadProfileImage} from "../../Redux/profileReducer";
 import {toggleIsFetching} from "../../Redux/friendsReducer";
 import Preloader from "../common/Preloader";
 import {withRouter} from "react-router-dom";
@@ -16,7 +16,8 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId
+        || (!this.props.match.params.userId && this.props.authorizedUserId !== prevProps.authorizedUserId)) {
            this.refreshProfile();
         }
     }
@@ -24,7 +25,7 @@ class ProfileContainer extends React.Component {
     refreshProfile() {
         let userId = this.props.match.params.userId || this.props.authorizedUserId;
         if (!userId) {
-            this.props.history.push('/login');
+            this.props.history.push('/login'); //TODO remove deprecated code
         }
         this.props.getUsersProfile(userId);
         this.props.getUsersStatus(userId);
@@ -59,5 +60,6 @@ export default compose(
         getUsersProfile,
         getUsersStatus,
         changeStatus,
+        uploadProfileImage,
     }),
 )(ProfileContainer)

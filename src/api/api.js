@@ -18,11 +18,18 @@ export const profileApi = {
         return response.data;
     },
     async updateStatus(status) {
-        const response = await axiosInstance.put('profile/status', {status});
+        const response = await axiosInstance.put('profile/status', {status: status});
         return response.data;
     },
     async putProfilePhoto(image) {
-        const response = await axiosInstance.put('profile/photoFile', {image});
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const response = await axiosInstance.put('profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
         return response.data;
     }
 };

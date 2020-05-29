@@ -5,6 +5,12 @@ import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 import defaultUserIcon from '../../../res/userIcon.png';
 
 const ProfileInfo = (props) => {
+    const onFileSubmit = (event) => {
+        if (event.target.files.length) {
+            props.uploadProfileImage(event.target.files[0]);
+        }
+    };
+
     return (
         <div>
             <div>
@@ -12,7 +18,7 @@ const ProfileInfo = (props) => {
                      src={props.profileImage || defaultUserIcon}/>
             </div>
             {props.isOwner && (
-                <input type='file'/>
+                <input type='file' onChange={onFileSubmit}/>
             )}
             <div>
                 <div>{props.fullName}</div>

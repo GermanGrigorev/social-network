@@ -44,7 +44,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profileImage: action.imageUrl,
-            }
+            };
         case TOGGLE_IS_FETCHING:
             return {
                 ...state,
@@ -92,8 +92,12 @@ export const changeStatus = (status) => {
 
 export const uploadProfileImage = (imageFile) => {
     return async (dispatch) => {
-        const data = await profileApi.putProfilePhoto(imageFile)
+        const data = await profileApi.putProfilePhoto(imageFile);
+        if (data.resultCode === 0) {
+            dispatch(setProfileImage(data.data.photos.large))
+        }
+        console.log(data.messages);
     }
-}
+};
 
 export default profileReducer;
