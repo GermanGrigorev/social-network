@@ -1,7 +1,7 @@
 import React, {lazy} from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
-import {Route, withRouter} from 'react-router-dom';
+import {Redirect, Route, withRouter} from 'react-router-dom';
 import Music from './components/Music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
@@ -17,7 +17,7 @@ import withBrowserRouter from "./hocs/withBrowserRouter";
 import withStoreProvider from "./hocs/withStoreProvider";
 import withSuspense from "./hocs/withSuspense";
 import withHashRouter from "./hocs/withHashRouter";
-import {Switch} from "react-router-dom";
+import {Switch} from "react-router";
 
 const FriendsContainer = React.lazy(() => import("./components/Friends/FriendsContainer"));
 
@@ -37,13 +37,13 @@ class App extends React.Component {
                 <div className='app-wrapper__nav'><NavBar/></div>
                 <div className='app-wrapper__content'>
                     <Switch>
-                        <Route exact path='/' render={() => <Login/>}/>
+                        <Redirect exact from="/" to="/profile" />
                         <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/news' render={() => <News/>}/>
                         {/*<Route path='/music' render={() => <Music/>}/>*/}
                         <Route path='/friends' render={() => withSuspense(FriendsContainer)()}/>
-                        <Route path='/settings' render={() => <Settings/>}/>
+                        {/*<Route path='/settings' render={() => <Settings/>}/>*/}
                         <Route path='/login' render={() => <Login/>}/>
                         <Route path='*' render={() => <h1>404: Page not found</h1>} />
                     </Switch>

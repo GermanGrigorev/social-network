@@ -13,25 +13,30 @@ const ProfileInfo = (props) => {
     };
 
     return (
-        <div>
+        <div className='ProfileInfo-Wrapper'>
             <div>
-                <img className='profile__image'
-                     src={props.profileImage || defaultUserIcon}/>
+                <div>
+                    <img className='ProfileInfo-Image'
+                         src={props.profileImage || defaultUserIcon}/>
+                </div>
+                {props.isOwner && (
+                    // <UploadOutlined onChange={onFileSubmit}/> //TODO разобраться с upload
+                    <input className='FileInput' type='file' onChange={onFileSubmit}/>
+                )}
+                <ProfileStatusWithHooks
+                    status={props.status}
+                    changeStatus={props.changeStatus}
+                />
             </div>
-            {props.isOwner && (
-                <input type='file' onChange={onFileSubmit}/>
-            )}
-            <ProfileStatusWithHooks
-                status={props.status}
-                changeStatus={props.changeStatus}
-            />
-            <AboutMe
-                fullName={props.fullName}
-                aboutMe={props.aboutMe}
-                contacts={props.contacts}
-                lookingForAJob={props.lookingForAJob}
-                lookingForAJobDescription={props.lookingForAJobDescription}
-            />
+            <div>
+                <AboutMe
+                    fullName={props.fullName}
+                    aboutMe={props.aboutMe}
+                    contacts={props.contacts}
+                    lookingForAJob={props.lookingForAJob}
+                    lookingForAJobDescription={props.lookingForAJobDescription}
+                />
+            </div>
         </div>
     )
 };

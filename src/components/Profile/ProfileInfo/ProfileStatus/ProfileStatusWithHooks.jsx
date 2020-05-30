@@ -21,6 +21,7 @@ const ProfileStatusWithHooks = (props) => {
         <>
             {editMode && (
                 <div>
+                    <span>Status:</span>
                     <input
                         type='text'
                         value={status}
@@ -32,6 +33,7 @@ const ProfileStatusWithHooks = (props) => {
             )}
             {!editMode && (
                 <div onDoubleClick={() => setEditMode(true)}>
+                    <span>Status:</span>
                     <span>{props.status || 'How are you doing?'}</span>
                 </div>
             )}

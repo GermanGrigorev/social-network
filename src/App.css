@@ -2,6 +2,7 @@
     margin: 0 auto;
     width: 1000px;
     display: grid;
+    min-height: 700px;
     grid-template-rows: 100px 1fr;
     grid-template-columns: 150px 1fr;
     grid-template-areas: 'header header' 'nav content';

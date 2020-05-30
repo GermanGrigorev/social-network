@@ -4,6 +4,7 @@ const AboutMe = (props) => {
     return (
         <div>
             <div>{props.fullName}</div>
+            <hr />
             <div>{props.aboutMe}</div>
             <div>
                 Looking for a job: {props.lookingForAJob ? 'yes' : 'no'}

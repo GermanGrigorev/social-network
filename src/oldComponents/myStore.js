@@ -48,6 +48,6 @@ let myStore = {
 
     _callSubscriber() {
     },
-}
+};
 
 export default myStore
