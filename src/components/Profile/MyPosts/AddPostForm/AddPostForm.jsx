@@ -1,6 +1,6 @@
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../../common/FormsControls";
+import {TextArea} from "../../../common/FormsControls";
 import React from "react";
 
 const maxLength200 = maxLengthCreator(200);
@@ -11,7 +11,7 @@ const AddPostForm = (props) => {
             <div>
                 <Field
                     name='newPostText'
-                    component={Textarea}
+                    component={TextArea}
                     placeholder='Enter new post text'
                     validate={[required, maxLength200]}
                 />

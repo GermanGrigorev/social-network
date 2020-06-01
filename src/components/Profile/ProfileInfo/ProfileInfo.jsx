@@ -41,7 +41,9 @@ const ProfileInfo = (props) => {
                     />
                 )}
                 {editMode && (
-                    <AboutMeChangingForm />
+                    <AboutMeChangingForm
+                        onSubmit={props.changeProfileInfo}
+                    />
                 )}
                 {props.isOwner && (
                     <button onClick={() => setEditMode(!editMode)}>Change information about you </button>

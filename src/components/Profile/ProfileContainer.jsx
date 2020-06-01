@@ -1,7 +1,14 @@
 import * as React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {addPost, changeStatus, getUsersProfile, getUsersStatus, uploadProfileImage} from "../../Redux/profileReducer";
+import {
+    addPost,
+    changeProfileInfo,
+    changeStatus,
+    getUsersProfile,
+    getUsersStatus,
+    uploadProfileImage
+} from "../../Redux/profileReducer";
 import {toggleIsFetching} from "../../Redux/friendsReducer";
 import Preloader from "../common/Preloader";
 import {withRouter} from "react-router-dom";
@@ -61,5 +68,6 @@ export default compose(
         getUsersStatus,
         changeStatus,
         uploadProfileImage,
+        changeProfileInfo,
     }),
 )(ProfileContainer)

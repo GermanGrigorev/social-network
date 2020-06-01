@@ -2,7 +2,7 @@ import {profileApi} from "../api/api";
 
 const ADD_POST = 'social-network/profile/ADD-POST';
 const DELETE_POST = 'social-network/profile/DELETE_POST';
-const SET_PROFILE = 'social-network/profile/SET_PROFILE';
+const SET_PROFILE_INFO = 'social-network/profile/SET_PROFILE_INFO';
 const TOGGLE_IS_FETCHING = 'social-network/profile/TOGGLE_IS_FETCHING';
 const SET_STATUS = 'social-network/profile/SET_STATUS';
 const SET_PROFILE_IMAGE = 'social-network/profile/SET_PROFILE_IMAGE';
@@ -36,7 +36,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 posts: state.posts.filter((p) => p.id !== action.postId),
             };
-        case SET_PROFILE:
+        case SET_PROFILE_INFO:
             return {
                 ...state,
                 fullName: action.fullName,
@@ -44,7 +44,6 @@ const profileReducer = (state = initialState, action) => {
                 contacts: action.contacts,
                 lookingForAJob: action.lookingForAJob,
                 lookingForAJobDescription: action.lookingForAJobDescription,
-                profileImage: action.photos.large,
             };
         case SET_PROFILE_IMAGE:
             return {
@@ -68,7 +67,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const deletePost = (postId) => ({type: ADD_POST, postId});
-export const setProfile = (profileData) => ({type: SET_PROFILE, ...profileData,});
+export const setProfileInfo = (profileData) => ({type: SET_PROFILE_INFO, ...profileData,});
 export const setProfileImage = (imageUrl) => ({type: SET_PROFILE_IMAGE, imageUrl,});
 export const toggleIsFetching = () => ({type: TOGGLE_IS_FETCHING,});
 export const setStatus = (status) => ({type: SET_STATUS, status,});
@@ -76,13 +75,17 @@ export const setStatus = (status) => ({type: SET_STATUS, status,});
 export const getUsersProfile = (userId) => {
     return async (dispatch) => {
         const data = await profileApi.getUsersProfile(userId);
-        dispatch(setProfile(data));
+        dispatch(setProfileInfo(data));
+        dispatch(setProfileImage(data.photos.large));
     }
 };
-export const setUsersProfile = (profileData) => {
+
+export const changeProfileInfo = (profileInfo) => {
     return async (dispatch) => {
-        const data = await profileApi.setUsersProfile(...profileData);
-        dispatch(setProfile(data));
+        const data = await profileApi.setUsersProfile(profileInfo);
+        if (data.resultCode === 0) {
+            dispatch(setProfileInfo(profileInfo));
+        }
     }
 };
 
