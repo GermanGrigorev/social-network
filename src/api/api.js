@@ -13,6 +13,16 @@ export const profileApi = {
         const response = await axiosInstance.get(`profile/${userId}`);
         return response.data;
     },
+    async setUsersProfile(userId, lookingForAJob, lookingForAJobDescription, fullName, contacts) {
+        const response = await axiosInstance.put(`profile`, {
+            userId,
+            lookingForAJob,
+            lookingForAJobDescription,
+            fullName,
+            contacts,
+        });
+        return response.data;
+    },
     async getStatus(userId) {
         const response = await axiosInstance.get(`profile/status/${userId}`);
         return response.data;
@@ -57,7 +67,7 @@ export const authApi = {
         return response.data;
     },
     async login(email, password, rememberMe, captcha) {
-        const response = await axiosInstance.post('/auth/login', {
+        const response = await axiosInstance.post('auth/login', {
             email,
             password,
             rememberMe,
@@ -66,14 +76,14 @@ export const authApi = {
         return response.data;
     },
     async logout() {
-        const response = await axiosInstance.delete('/auth/login');
+        const response = await axiosInstance.delete('auth/login');
         return response.data;
     },
 };
 
 export const securityApi = {
     async getCaptcha() {
-        const response = await axiosInstance.get('/security/get-captcha-url');
+        const response = await axiosInstance.get('security/get-captcha-url');
         return response.data;
     },
 };

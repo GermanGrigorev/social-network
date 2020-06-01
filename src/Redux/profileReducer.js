@@ -79,6 +79,12 @@ export const getUsersProfile = (userId) => {
         dispatch(setProfile(data));
     }
 };
+export const setUsersProfile = (profileData) => {
+    return async (dispatch) => {
+        const data = await profileApi.setUsersProfile(...profileData);
+        dispatch(setProfile(data));
+    }
+};
 
 export const getUsersStatus = (userId) => {
     return async (dispatch) => {
