@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {login} from "../../Redux/authReducer";
 import LoginForm from "./LoginForm/LoginForm";
 import {Redirect} from "react-router-dom";
+import './Login.css'
 
 class Login extends React.Component {
     render() {
@@ -13,7 +14,7 @@ class Login extends React.Component {
         if (this.props.isAuth) return <Redirect to='/profile'/>;
 
         return (
-            <div>
+            <div className='Login_padding'>
                 <h1>Login</h1>
                 <LoginForm
                     onSubmit={onSubmit}

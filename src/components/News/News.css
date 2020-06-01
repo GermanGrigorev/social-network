@@ -1,13 +1,3 @@
-.news {
-    /*animation: news-spin 5s;*/
-    animation-timing-function: linear;
-}
-
-@keyframes news-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.News_padding {
+    padding: 5px;
 }
