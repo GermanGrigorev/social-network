@@ -14,15 +14,14 @@ export const profileApi = {
         return response.data;
     },
     async setUsersProfile(profileInfo) {
-        const {lookingForAJob, lookingForAJobDescription, fullName, contacts} = profileInfo;
+        const {aboutMe, fullName, lookingForAJob, lookingForAJobDescription, contacts} = profileInfo;
         const response = await axiosInstance.put(`profile`, {
-            userId: 7808,
+            aboutMe,
+            fullName,
             lookingForAJob,
             lookingForAJobDescription,
-            fullName,
             contacts,
         });
-        console.log(response);
         return response.data;
     },
     async getStatus(userId) {

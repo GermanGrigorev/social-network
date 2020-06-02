@@ -85,6 +85,8 @@ export const changeProfileInfo = (profileInfo) => {
         const data = await profileApi.setUsersProfile(profileInfo);
         if (data.resultCode === 0) {
             dispatch(setProfileInfo(profileInfo));
+        } else {
+            console.log(data.messages)
         }
     }
 };

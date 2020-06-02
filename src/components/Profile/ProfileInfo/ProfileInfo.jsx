@@ -14,6 +14,11 @@ const ProfileInfo = (props) => {
         }
     };
 
+    const onAboutMeFormSubmit = (formData) => {
+        props.changeProfileInfo(formData);
+        setEditMode(false);
+    }
+
     return (
         <div className='ProfileInfo-Wrapper'>
             <div>
@@ -25,28 +30,36 @@ const ProfileInfo = (props) => {
                     // <UploadOutlined onChange={onFileSubmit}/> //TODO разобраться с upload
                     <input className='FileInput' type='file' onChange={onFileSubmit}/>
                 )}
-                <ProfileStatusWithHooks
-                    status={props.status}
-                    changeStatus={props.changeStatus}
-                />
+                <div>Status:</div>
+                {props.isOwner && (
+                    <ProfileStatusWithHooks
+                        status={props.status}
+                        changeStatus={props.changeStatus}
+                    />
+                )}
+                {!props.isOwner && (
+                    <div>props.status</div>
+                )}
             </div>
             <div>
                 {!editMode && (
-                    <AboutMe
-                        fullName={props.fullName}
-                        aboutMe={props.aboutMe}
-                        contacts={props.contacts}
-                        lookingForAJob={props.lookingForAJob}
-                        lookingForAJobDescription={props.lookingForAJobDescription}
-                    />
+                    <div>
+                        <AboutMe
+                            fullName={props.fullName}
+                            aboutMe={props.aboutMe}
+                            contacts={props.contacts}
+                            lookingForAJob={props.lookingForAJob}
+                            lookingForAJobDescription={props.lookingForAJobDescription}
+                        />
+                        {props.isOwner && (
+                            <button onClick={() => setEditMode(true)}>Change information about you </button>
+                        )}
+                    </div>
                 )}
                 {editMode && (
                     <AboutMeChangingForm
-                        onSubmit={props.changeProfileInfo}
+                        onSubmit={onAboutMeFormSubmit}
                     />
-                )}
-                {props.isOwner && (
-                    <button onClick={() => setEditMode(!editMode)}>Change information about you </button>
                 )}
             </div>
         </div>
