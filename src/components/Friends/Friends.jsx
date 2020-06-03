@@ -4,7 +4,7 @@ import defaultUserIcon from "../../res/userIcon.png"
 import {NavLink} from "react-router-dom";
 import Paginator from "./Paginator/Paginator";
 import {Pagination} from "antd";
-// import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
