@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
     const onAboutMeFormSubmit = (formData) => {
         props.changeProfileInfo(formData);
         setEditMode(false);
-    }
+    };
 
     return (
         <div className='ProfileInfo-Wrapper'>

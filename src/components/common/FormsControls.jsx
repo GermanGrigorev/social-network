@@ -8,7 +8,9 @@ export const FormControl = ({input, meta, ...props}) => {
             <props.element {...input} {...props}
                            className={elementClassName}
             />
-            {meta.touched && meta.error && <span className='FormError-Text'>{meta.error}</span>}
+            {meta.touched && meta.error &&(
+                <span className='FormError-Text'>{meta.error}</span>
+            )}
         </div>
     );
 };

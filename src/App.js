@@ -37,7 +37,7 @@ class App extends React.Component {
                 <div className='app-wrapper__nav'><NavBar/></div>
                 <div className='app-wrapper__content'>
                     <Switch>
-                        <Redirect exact from="/" to="/profile" />
+                        <Redirect exact from='/' to='/profile' />
                         <Route path='/dialogs' render={() => <DialogsContainer/>}/>
                         <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                         <Route path='/news' render={() => <News/>}/>
