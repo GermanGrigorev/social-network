@@ -1,0 +1,1 @@
+{"version":3,"sources":["Friends.css","Friend.css"],"names":[],"mappings":"AAAA,iBACI,WACJ,CCFA,eACI,oBACJ,CAEA,gBACI,WACJ","file":"4.217eeb7f.chunk.css","sourcesContent":[".Friends_padding {\n    padding: 5px;\n}\n",".Friend_inline {\n    display: inline-block;\n}\n\n.Friend_padding {\n    padding: 5px;\n}\n"]}
